@@ -112,7 +112,7 @@ class BtNeu6(object):
                 else:
                     filename='%s/%s'%(path,torrent['filename'])
                     with open(filename,'wb') as f:
-                        f.write(session.get(torrent['href']).content)
+                        f.write(self.session.get(torrent['href']).content)
                     return (True,filename)
             except Exception as e:
                     return (False,e)
