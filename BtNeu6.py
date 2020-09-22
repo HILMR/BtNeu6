@@ -98,6 +98,7 @@ class BtNeu6(object):
 
                 
     def gettorrent(self,href,path):
+        path="up_torrents"
         """下载种子文件，href链接地址（通过getlist获取），path保存位置（输入''不下载只显示种子信息），
             返回tuple[0]表示获取是否成功，tuple[1]表示保存位置或错误原因"""
         if(self.state==True):
@@ -112,7 +113,7 @@ class BtNeu6(object):
                 else:
                     filename='%s/%s'%(path,torrent['filename'])
                     with open(filename,'wb') as f:
-                        f.write(session.get(torrent['href']).content)
+                        f.write(self.session.get(torrent['href']).content)
                     return (True,filename)
             except Exception as e:
                     return (False,e)
